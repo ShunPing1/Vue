@@ -12,10 +12,21 @@ export default {
   data() {
     return {
       addText: '',
-      toDoListArr: [
-    
-      ],
       endTime: '',
+      toDoListArr: [
+        {
+          id: 1,
+          toDo: '項目一',
+          // 編輯開關
+          editIng: false,
+          checkThis: false,
+          logTime: '2024-01-04',
+          endTime: '2024-01-13',
+          // 編輯後的文字
+          newToDo: '',
+        }
+      ],
+
     };
   },
   // 載入網頁時就執行的函式
@@ -53,9 +64,13 @@ export default {
           this.toDoListArr.push({
             id: contentId + 1,
             toDo: this.addText,
+            // 編輯開關
+            editIng: false,
             checkThis: false,
             logTime: date[0],
             endTime: this.endTime,
+            // 編輯後的文字
+            newToDo: '',
 
           });
           this.addText = '';
@@ -87,7 +102,7 @@ export default {
           this.toDoListArr = deleteResult;
           console.log(deleteResult);
           // 將原本toDoListArr的暫存資料改為deleteResult
-          sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr)) 
+          sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr))
 
           Swal.fire({
             title: "刪除成功",
@@ -95,9 +110,20 @@ export default {
           });
         }
       });
-
-
     },
+
+    // 編輯功能
+    editStart(item) {
+      // 將編輯開關打開
+      item.editIng = !item.editIng;
+      // 將原本的事項內容存進新的事項內容中
+      item.newToDo = item.toDo;
+    },
+    editFinish(item) {
+      item.editIng = !item.editIng;
+      item.toDo = item.newToDo;
+      sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
+    }
   },
 };
 
@@ -111,7 +137,7 @@ export default {
     <!-- 進度條 -->
     <div class="w-[70%] bg-white rounded-md pt-2">
       <div class="w-[60%] border-[2px] border-[#000] rounded-full overflow-hidden m-auto">
-        <div class="w-[20%] h-[20px] rounded-full bg-gradient-to-r from-[#0fa] to-[#0af]"></div>
+        <div class="w-[100%] h-[20px] rounded-full bg-gradient-to-r from-[#0fa] to-[#0af]"></div>
       </div>
       <div class="flex items-center justify-center border-b-2 gap-5">
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
@@ -130,7 +156,10 @@ export default {
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2"
           :class="{ 'text-[#faa]': item.checkThis }">
           <input class="ml-[30px]" type="checkbox" v-model="item.checkThis">
-          <div class="w-[200px] text-center">{{ item.toDo }}</div>
+          <div v-if="!item.editIng" class="w-[200px] text-center" @click="editStart(item)">
+            {{ item.toDo }}
+          </div>
+          <input v-else type="text" v-model="item.newToDo" @blur="editFinish(item)">
           <div>{{ item.logTime ?? '' }}</div>
           <div>{{ item.endTime }}</div>
           <button button class="bg-gradient-to-b from-red-500  to-orange-500 p-3 rounded-xl m-3 text-white" type="button"
