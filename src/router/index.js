@@ -30,6 +30,11 @@ const router = createRouter({
       name: 'todolist',
       component: () => import('../views/ToDoList.vue')
     },
+    {
+      path: '/pickupload',
+      name: 'pickupload',
+      component: () => import('../views/PickUpload.vue')
+    },
     
   ]
 })
