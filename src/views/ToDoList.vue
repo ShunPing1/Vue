@@ -91,7 +91,7 @@ export default {
           this.toDoListArr = deleteResult;
           console.log(deleteResult);
           // 將原本toDoListArr的暫存資料改為deleteResult
-          sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr))
+          sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr)) 
 
           Swal.fire({
             title: "刪除成功",
