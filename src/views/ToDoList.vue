@@ -13,11 +13,7 @@ export default {
     return {
       addText: '',
       toDoListArr: [
-        {
-          id: 1,
-          toDo: '不要下雨',
-          checkThis: false,
-        },
+    
       ],
       endTime: '',
     };
@@ -119,7 +115,7 @@ export default {
       </div>
       <div class="flex items-center justify-center border-b-2 gap-5">
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
-        <input type="date" v-model="endTime">
+        <input type="date" v-model="endTime" class="w-[200px]">
         <button class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-3 rounded-xl m-3 text-white text-xl"
           type="button" @click="addList()"><font-awesome-icon :icon="['fas', 'file-import']" /></button>
       </div>
@@ -134,7 +130,7 @@ export default {
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2"
           :class="{ 'text-[#faa]': item.checkThis }">
           <input class="ml-[30px]" type="checkbox" v-model="item.checkThis">
-          <div class="w-[200px] overflow-x-scroll">{{ item.toDo }}</div>
+          <div class="w-[200px] text-center">{{ item.toDo }}</div>
           <div>{{ item.logTime ?? '' }}</div>
           <div>{{ item.endTime }}</div>
           <button button class="bg-gradient-to-b from-red-500  to-orange-500 p-3 rounded-xl m-3 text-white" type="button"
