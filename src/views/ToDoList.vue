@@ -14,6 +14,7 @@ export default {
           id: 1,
           toDo: '不要下雨',
           checkThis: false,
+          endTime:'',
         },
       ],
     };
@@ -29,6 +30,7 @@ export default {
   },
   methods: {
     addList() {
+      console.log(new Date().toISOString().split('T'));
       if (!this.addText) return;
       const contentId = this.toDoListArr.length;
       this.toDoListArr.push({
@@ -39,6 +41,15 @@ export default {
       });
       this.addText = '';
       sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
+    },
+    // 刪除功能
+    deleteList(id){
+      console.log(id);
+      // 使用filter儲存點選id的其它結果
+      const deleteResult = this.toDoListArr.filter(item => item.id !== id);
+      this.toDoListArr = deleteResult;
+      console.log(deleteResult);
+
     },
   },
 };
@@ -53,6 +64,7 @@ export default {
     <div class="w-[70%] bg-white rounded-md">
       <div class="flex items-center justify-center border-b-2 gap-5">
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
+        <input type="date">
         <button class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-3 rounded-xl m-3 text-white text-xl"
           type="button" @click="addList()"><font-awesome-icon :icon="['fas', 'file-import']" /></button>
       </div>
@@ -61,7 +73,7 @@ export default {
           <input class="ml-3" type="checkbox" v-model="item.checkThis">
           <span>{{ item.toDo }}</span>
           <button button class="bg-gradient-to-b from-red-500  to-orange-500 p-3 rounded-xl m-3 text-white"
-            type="button"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
+            type="button" @click="deleteList(item.id)"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
         </div>
       </div>
     </div>
