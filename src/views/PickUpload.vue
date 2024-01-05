@@ -3,6 +3,8 @@
         <input type="file" accept=".jpg,.png" @change="UploadPic">
         <button type="button">上傳圖片</button>
         <img :src="fileSrc" alt="">
+        <div v-if="!this.testIng" @click="testFn">test</div>
+        <div v-else @click="testFn">{{ test }}</div>
         
     </div>
 </template>
@@ -12,6 +14,8 @@ export default {
         return {
             picFile:'',
             fileSrc:'',
+            test:'test',
+            testIng: false,
         }
     },
     methods: {
@@ -34,7 +38,12 @@ export default {
             }
 
 
-        }
+        },
+
+        testFn(){
+            this.testIng = !this.testIng;
+            this.test = '111';
+        },
     },
 }
 </script>
