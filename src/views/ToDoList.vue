@@ -73,6 +73,7 @@ export default {
             newToDo: '',
 
           });
+          console.log(this.toDoListArr);
           this.addText = '';
           sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
 
