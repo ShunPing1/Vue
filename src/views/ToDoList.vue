@@ -11,21 +11,24 @@ import Swal from 'sweetalert2'
 export default {
   data() {
     return {
+      width: '2%',
       addText: '',
       endTime: '',
       toDoListArr: [
-        {
-          id: 1,
-          toDo: '項目一',
-          // 編輯開關
-          editIng: false,
-          checkThis: false,
-          logTime: '2024-01-04',
-          endTime: '2024-01-13',
-          // 編輯後的文字
-          newToDo: '',
-        }
+        // {
+        //   id: 1,
+        //   toDo: '項目一',
+        //   // 編輯開關
+        //   editIng: false,
+        //   checkThis: false,
+        //   logTime: '2024-01-04',
+        //   endTime: '2024-01-13',
+        //   // 編輯後的文字
+        //   newToDo: '',
+        //   toDoListLength: 0,
+        // }
       ],
+      arr: [1, 2, 3, 4, 5]
 
     };
   },
@@ -35,12 +38,10 @@ export default {
       this.toDoListArr = JSON.parse(sessionStorage.getItem('toDoList'));
     } else {
       sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
-
     }
   },
   methods: {
     addList() {
-
       Swal.fire({
         title: "確認是否輸入",
         icon: "question",
@@ -71,10 +72,11 @@ export default {
             endTime: this.endTime,
             // 編輯後的文字
             newToDo: '',
+            // 陣列長度(進度條寬)
 
           });
-          console.log(this.toDoListArr);
           this.addText = '';
+          console.log('length', this.toDoListArr.length, this.toDoListArr);
           sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
 
           Swal.fire({
@@ -124,6 +126,24 @@ export default {
       item.editIng = !item.editIng;
       item.toDo = item.newToDo;
       sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
+    },
+    // 更改進度條
+    changePB(item) {
+      // 切換checkThis狀態
+      item.checkThis = !item.checkThis;
+      console.log(item.checkThis);
+      // 宣告一個紀錄checkThis為true的變數
+      let checkTrueCount = 0;
+      // 將所有checkThis為true的結果存進Alltrue變數中
+      const Alltrue = this.toDoListArr.filter(item => item.checkThis == true);
+      console.log(Alltrue);
+      // 宣告一個目前項目總數的變數
+      const toDoListLength = this.toDoListArr.length;
+      checkTrueCount = Alltrue.length;
+      this.width = ((checkTrueCount / toDoListLength )*100)+'%';
+      
+
+      sessionStorage.setItem('allTrue', JSON.stringify(this.Alltrue));
     }
   },
 };
@@ -138,7 +158,7 @@ export default {
     <!-- 進度條 -->
     <div class="w-[70%] bg-white rounded-md pt-2">
       <div class="w-[60%] border-[2px] border-[#000] rounded-full overflow-hidden m-auto">
-        <div class="w-[100%] h-[20px] rounded-full bg-gradient-to-r from-[#0fa] to-[#0af]"></div>
+        <div class="h-[20px] rounded-full bg-gradient-to-r from-[#0fa] to-[#0af]" :style="{ width: width }"></div>
       </div>
       <div class="flex items-center justify-center border-b-2 gap-5">
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
@@ -156,7 +176,7 @@ export default {
         </div>
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2"
           :class="{ 'text-[#faa]': item.checkThis }">
-          <input class="ml-[30px]" type="checkbox" v-model="item.checkThis">
+          <input class="ml-[30px]" type="checkbox" v-model="item.checkThis" @click="changePB(item)">
           <div v-if="!item.editIng" class="w-[200px] text-center" @click="editStart(item)">
             {{ item.toDo }}
           </div>
