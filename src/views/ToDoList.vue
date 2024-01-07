@@ -15,18 +15,18 @@ export default {
       addText: '',
       endTime: '',
       toDoListArr: [
-        // {
-        //   id: 1,
-        //   toDo: '項目一',
-        //   // 編輯開關
-        //   editIng: false,
-        //   checkThis: false,
-        //   logTime: '2024-01-04',
-        //   endTime: '2024-01-13',
-        //   // 編輯後的文字
-        //   newToDo: '',
-        //   toDoListLength: 0,
-        // }
+        {
+          id: 1,
+          toDo: '項目一',
+          // 編輯開關
+          editIng: false,
+          checkThis: false,
+          logTime: '2024-01-04',
+          endTime: '2024-01-13',
+          // 編輯後的文字
+          newToDo: '',
+          toDoListLength: 0,
+        }
       ],
       arr: [1, 2, 3, 4, 5]
 
@@ -139,7 +139,9 @@ export default {
       console.log(Alltrue);
       // 宣告一個目前項目總數的變數
       const toDoListLength = this.toDoListArr.length;
+      // 將checkTrueCount與Alltrue(儲存checkThis為true的陣列)長度進行綁定
       checkTrueCount = Alltrue.length;
+      // 將進度條的寬度進行計算:((checkThis為true的總數 / 目前項目總數)*100)
       this.width = ((checkTrueCount / toDoListLength )*100)+'%';
       
 
