@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 export default {
   data() {
     return {
-      width: '2%',
+      width: '0%',
       addText: '',
       endTime: '',
       toDoListArr: [
