@@ -6,10 +6,10 @@ export default {
       type:Array,
     },
     numberOne:{
-      type:Number,
+      type:String,
     },
     numberTwo:{
-      type:Number,
+      type:String,
     }
   },
   // 要回傳給主頁面的方法
@@ -27,16 +27,16 @@ export default {
   if (this.numberOne.toString().trim() === '' || this.numberTwo.toString().trim() === '') return;
       switch (type) {
         case '+':
-        this.result = this.numberOne + this.numberTwo;
+        this.result = (this.numberOne * 1) + (this.numberTwo * 1);
           break;
         case '-':
-        this.result = this.numberOne - this.numberTwo;
+        this.result = (this.numberOne * 1) - (this.numberTwo * 1);
           break;
         case '*':
-        this.result = this.numberOne * this.numberTwo;
+        this.result = (this.numberOne * 1) * (this.numberTwo * 1);
           break;
         case '/':
-        this.result = this.numberOne / this.numberTwo;
+        this.result = (this.numberOne * 1) / (this.numberTwo * 1);
           break;
       
         default:

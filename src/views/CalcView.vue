@@ -10,15 +10,17 @@ export default {
   // 放置所有變數的位置
   data() {
     return {
-      numA: 0,
-      numB: 0,
+      numA: '',
+      numB: '',
       result: 0,
+      btnSwitch: false,
       html: `
         <div>
           我是html文字
         </div>
       `,
       calcType: ['+', '-', '*', '/'],
+      calcNum: ['1','2','3','4','5','6','7','8','9','0']
     };
   },
   // 今天我開啟了這個網頁後先處理的事情
@@ -57,6 +59,23 @@ this.checkThis();
     },
     checkThis(){
       console.log(456);
+    },
+    addNum(item){
+      if (!this.btnSwitch) {
+        this.numA += item;
+      }else{
+        this.numB += item;
+      }
+
+   },
+    changeSwitch(){
+      this.btnSwitch = !this.btnSwitch;
+      console.log(this.btnSwitch);
+    },
+    reset(){
+      this.numA = '';
+      this.numB = '';
+      this.btnSwitch = false;
     }
   },
 }
@@ -87,14 +106,16 @@ this.checkThis();
       <label>
         數字A:
         <!-- v-model -->
-        <input v-model="numA" type="number">
+        <input v-model="numA" type="number" readonly>
       </label>
+      <button class="border-[#000] border-[2px] p-[5px]" type="button" @click="changeSwitch">Done</button>
     </div>
     <div>
       <label>
         數字B:
-        <input v-model="numB" type="number">
+        <input v-model="numB" type="number" readonly>
       </label>
+      <button class="border-[#000] border-[2px] p-[5px]" type="button" @click="reset">reset</button>
     </div>
 
     <div class="btns">
@@ -102,9 +123,9 @@ this.checkThis();
       <CalcButton :calc-type="calcType" :number-one="numA" :number-two="numB" @final-math = "fanalMath"/>
       <!-- 做出0~9的數字盤 他可以點擊之後會讓數字A加數字上去 -->
     </div>
-    <div>
+    <div class="w-[200px] flex flex-wrap justify-center gap-[5px] p-[5px]">
       <!-- 數字可以做成陣列並利用v-for顯示數字0-9 接下來再編寫@click的function去加入numA裡面-->
-      <button type="button" class=" rounded-full bg-sky-600 text-white w-[50px] h-[50px] flex items-center justify-center">1</button>
+      <button v-for="item in calcNum" :key="item.id" type="button" class=" rounded-full bg-sky-600 text-white w-[50px] h-[50px] flex items-center justify-center" @click="addNum(item)">{{ item }}</button>
     </div>
     <div class="output text-main-deep bg-blue-100">
       輸出結果: {{ result }}
