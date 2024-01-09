@@ -1,12 +1,22 @@
 <script>
 export default {
+    props:{
+        weatherData:{
+            type:Object,
+        }
+    },
+
+    
+    methods: {
+        showArray(){
+            console.log(this.weatherData);
+        }
+    },
 
 }
 </script>
 <template lang="">
-    <div>
-        11111111111111
-    </div>
+    <div v-for="item in weatherData" :key="item.id" @click="showArray">111</div>
 </template>
 <style lang="">
     

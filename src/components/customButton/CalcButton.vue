@@ -10,7 +10,8 @@ export default {
     },
     numberTwo:{
       type:String,
-    }
+    },
+    
   },
   // 要回傳給主頁面的方法
   emit:['finalMath'],
@@ -50,13 +51,14 @@ export default {
 </script>
 <!-- html -->
 <template>
-  <section id="myBtn">
-    <!-- 帶入主頁面的值並且進行顯示或是有作用 -->
+  112233
+  <!-- 帶入主頁面的值並且進行顯示或是有作用 -->
+  <!-- <section id="myBtn">
     <button v-for="item in type" :key="item.id" class="btn" type="button" @click="enterCalc(item)">
       {{ item }}
     </button>
 
-  </section>
+  </section> -->
 </template>
 
 <style lang="scss" scoped>
