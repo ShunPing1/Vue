@@ -1,10 +1,16 @@
 <script>
-import { RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
+import background from '@/assets/image/desert.jpg';
 
 export default {
   // 元件宣告
   components: {
     RouterView
+  },
+  data(){
+    return{
+      background,
+    }
   },
 }
 </script>
@@ -17,6 +23,7 @@ export default {
     <a href="/calc">calc</a>
     <a href="/todolist">todolist</a>
     <a href="/pickupload">PickUpload</a>
+    <a href="/weathercard">WeatherCard</a>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->
@@ -25,6 +32,8 @@ export default {
   <main>
     <RouterView />
     <div class="calc text-[80px]">我來自公版</div>
+
+    <div class="imgArea" :style="{backgroundImage:`url(${background})`}"></div>
   </main>
   <footer>
   </footer>
@@ -66,6 +75,12 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.imgArea{
+  width: 200px;
+  height: 200px;
+  background-color: #faa;
 }
 
 @media (min-width: 1024px) {

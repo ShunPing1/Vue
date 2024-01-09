@@ -35,6 +35,11 @@ const router = createRouter({
       name: 'pickupload',
       component: () => import('../views/PickUpload.vue')
     },
+    {
+      path: '/weathercard',
+      name: 'weathercard',
+      component: () => import('../views/WeatherCard.vue')
+    },
     
   ]
 })
