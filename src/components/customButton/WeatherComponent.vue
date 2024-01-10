@@ -1,14 +1,14 @@
 <script>
 export default {
-    props:{
-        weatherData:{
-            type:Object,
+    props: {
+        weatherData: {
+            type: Object,
         }
     },
 
-    
+
     methods: {
-        showArray(){
+        showArray() {
             console.log(this.weatherData.weatherElement);
         }
     },
@@ -24,16 +24,26 @@ export default {
 */
 </script>
 <template lang="">
-    <div  class="border-[#000] border-[2px]" @click="showArray">
-        <table>
-            <tr>
-                <td>{{ weatherData.locationName }}</td>
-                <!-- <td>{{item.weatherElement[0]}}</td> -->
-            </tr>
-        </table>
-    
+    <div @click="showArray">
+        
+            <div class="w-[800px] bg-[#aaf]">
+                <div class="text-[30px] text-center">{{ weatherData.locationName }}</div>
+                <div class="flex justify-around">
+                    <span>{{ this.weatherData.weatherElement[0].time[0].parameter.parameterName }}</span>
+                    <span>降雨機率：{{ this.weatherData.weatherElement[1].time[0].parameter.parameterName }}%</span>
+                    <span>
+                        溫度：{{ this.weatherData.weatherElement[2].time[0].parameter.parameterName }}
+                        ~{{ this.weatherData.weatherElement[4].time[0].parameter.parameterName }}
+                    </span>
+                    <span>體感：{{ this.weatherData.weatherElement[3].time[0].parameter.parameterName }}</span>
+                </div>
+
+            </div>
+        
     </div>
 </template>
-<style lang="">
-    
+<style scoped>
+td {
+    @apply border-[0px] border-[#000];
+}
 </style>
