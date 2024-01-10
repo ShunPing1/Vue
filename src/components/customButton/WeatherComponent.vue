@@ -16,7 +16,15 @@ export default {
 }
 </script>
 <template lang="">
-    <div v-for="item in weatherData" :key="item.id" @click="showArray">111</div>
+    <div  class="border-[#000] border-[2px]" @click="showArray">
+        <table>
+            <tr>
+                <td>{{ weatherData.locationName }}</td>
+                <!-- <td>{{item.weatherElement[0]}}</td> -->
+            </tr>
+        </table>
+    
+    </div>
 </template>
 <style lang="">
     
