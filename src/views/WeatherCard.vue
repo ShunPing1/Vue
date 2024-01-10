@@ -14,24 +14,32 @@ export default {
             catchData: [],
             // place:['北部','中部','南部','東部','離島']
             place: [
-                {   id:1,
+                {   
+                    id:1,
                     name:'全台',
                 },
-                {   id:2,
+                {   
+                    id:2,
                     name:'北部',
                 },
-                {   id:3,
+                {   
+                    id:3,
                     name:'中部',
                 },
-                {   id:4,
+                {   
+                    id:4,
                     name:'南部',
                 },
-                {   id:5,
+                {   
+                    id:5,
                     name:'東部',
                 },
-                {   id:6,
+                {   
+                    id:6,
                     name:'離島',
                 }],
+            
+            placeID: 0,
             
         }
     },
@@ -62,7 +70,7 @@ export default {
 <template lang="">
     <div class="flex gap-[5px]">
         <div v-for="item in place" :key="item.id" class="hover:bg-[#9bdff0]">
-            <WeatherSlot :place-btn="item" @click="filterPlace"></WeatherSlot>
+            <WeatherSlot :place-btn="item" @click="place = item.id"></WeatherSlot>
         </div>
     </div>
     <div v-for="item in catchData" :key="item.id" >
