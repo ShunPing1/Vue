@@ -20,6 +20,7 @@ export default {
     fontFamily: {
       'big':['Rubik+Doodle+Shadow'],
     },
+    
   },
   plugins: [],
 }

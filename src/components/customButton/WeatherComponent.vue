@@ -1,5 +1,8 @@
 <script>
-// import cloud from '@/assets/Image/cloudy.jpg';
+import cloud from '@/assets/image/cloudy.jpg';
+import sun from '@/assets/image/sun.jpeg';
+import sunCloudy from '@/assets/image/sunny.webp';
+import rainy from '@/assets/image/rainy.jpg';
 export default {
     props: {
         weatherData: {
@@ -9,10 +12,11 @@ export default {
 
     data(){
     return{
-      sun: '../../assets/image/sun.jpeg',
-      sunny: '../../assets/image/sunny.webp',
-      cloudy: '../../assets/image/cloudy.jpg',
-      rainy: '../../assets/image/rainy.jpg',
+      cloud: cloud,
+      sun: sun,
+      sunCloudy: sunCloudy,
+      rainy: rainy,
+      
 
     }
   },
@@ -21,6 +25,20 @@ export default {
         showArray() {
             console.log(this.weatherData.weatherElement);
             console.log(this.imageUrl);
+        },
+        changImg(item){
+            const rain = item * 1;
+            console.log(typeof rain);
+            if (rain <= 10) {
+                return this.sun;
+            }else if(rain <= 20){
+                return this.sunCloudy;
+            }else if(rain <= 50){
+                return this.cloud;
+            }else{
+                return this.rainy;
+            }
+            
         }
     },
 
@@ -35,13 +53,10 @@ export default {
 */
 </script>
 <template lang="">
-    <!-- <div @click="showArray">test</div> -->
-    <!-- :style="`background-image: url(${imageUrl})`" -->
-    <!-- <img src='../../assets/image/rainy.jpg' alt=""> -->
-    <div class="container w-[800px] p-[10px] bg-[#aaf]" :class="`bg-[url(${cloudy})]`">
-    <!-- <div class="container w-[800px] p-[10px] bg-[#aaf] bg-[url('../../assets/image/rainy.jpg')]"> -->
-        <div class="text-[30px] text-center">{{ weatherData.locationName }}</div>
-        <div class="flex justify-around p-[20px]">
+
+    <div class="container w-[800px] p-[10px] " :style="{backgroundImage: `url(${changImg(this.weatherData.weatherElement[1].time[0].parameter.parameterName)})`}">
+        <div class="text-[30px] text-center font-black">{{ weatherData.locationName }}</div>
+        <div class="flex justify-around p-[20px] font-bold">
             <span>{{ this.weatherData.weatherElement[0].time[0].parameter.parameterName }}</span>
             <span>降雨機率：{{ this.weatherData.weatherElement[1].time[0].parameter.parameterName }}%</span>
             <span>
@@ -57,8 +72,9 @@ export default {
 </template>
 <style scoped>
     .container{
-        /* background-image: url('../../assets/image/cloudy.jpg'); */
+        /* background-image: url('@/assets/image/cloudy.jpg'); */
         border-bottom: 3px solid #555;
         background-position: center;
+        background-repeat: no-repeat;
     }
 </style>
