@@ -45,6 +45,9 @@ export default {
             south:['嘉義縣','嘉義市','高雄市','臺南市','屏東縣','澎湖縣'],
             east:['花蓮縣','臺東縣'],
             island:['金門縣','連江縣'],
+            watchInput: '',
+            watchCheck: false,
+
 
         }
     },
@@ -81,10 +84,25 @@ export default {
         showData() {
             console.log('weather data:', this.catchData[0]);
         },
+
     },
+    watch:{
+        watchInput:{
+            handler(){
+                if (this.watchInput === '123') {
+                    this.watchCheck = true;
+                }else{
+                    this.watchCheck = false;
+                }
+            }
+        }
+    }
 }
 </script>
 <template lang="">
+    <input v-model="watchInput" type="text">
+    <input v-model="watchCheck" type="checkbox">
+    {{ watchCheck }}
     <div class="flex gap-[5px]">
         <div v-for="item in place" :key="item.id" class="hover:bg-[#9bdff0]">
             <WeatherSlot :place-btn="item" @click="placeID = item.id"></WeatherSlot>
