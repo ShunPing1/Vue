@@ -10,6 +10,7 @@ export default {
   data(){
     return{
       background,
+
     }
   },
 }
@@ -27,12 +28,10 @@ export default {
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->
-    
   </header>
   <main>
     <RouterView />
     <div class="calc text-[80px]">我來自公版</div>
-
     <div class="imgArea" :style="{backgroundImage:`url(${background})`}"></div>
   </main>
   <footer>
