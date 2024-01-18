@@ -40,6 +40,11 @@ const router = createRouter({
       name: 'weathercard',
       component: () => import('../views/WeatherCard.vue')
     },
+    {
+      path: '/aospage',
+      name: 'aospage',
+      component: () => import('../views/AosPage.vue')
+    },
     
   ]
 })
