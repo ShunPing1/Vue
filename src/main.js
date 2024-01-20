@@ -4,6 +4,11 @@ import './assets/css/style.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+// 導入jquery
+import $ from 'jquery';
+// lightbox
+import 'lightbox2/dist/css/lightbox.css';
+import 'lightbox2/dist/js/lightbox.js';
 // fontawesome 加入
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
@@ -15,6 +20,11 @@ const app = createApp(App)
 library.add(faShoppingCart, faInstagram, faFacebookSquare, fas)
 app.component('font-awesome-icon', FontAwesomeIcon) //使用kebab-case
 app.config.productionTip = false
+
+// 將jquery作為全局變量
+window.$ = $;
+window.jQuery = $;
+
 
 app.use(router)
 app.mount('#app')

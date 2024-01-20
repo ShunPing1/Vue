@@ -26,6 +26,7 @@ export default {
     <a href="/pickupload">PickUpload</a>
     <a href="/weathercard">WeatherCard</a>
     <a href="/aospage">AosPage</a>
+    <a href="/lightbox">LightBox</a>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->

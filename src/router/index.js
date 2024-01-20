@@ -45,6 +45,11 @@ const router = createRouter({
       name: 'aospage',
       component: () => import('../views/AosPage.vue')
     },
+    {
+      path: '/lightbox',
+      name: 'lightbox',
+      component: () => import('../views/LightBox.vue')
+    },
     
   ]
 })
