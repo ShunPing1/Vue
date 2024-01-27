@@ -1,43 +1,21 @@
-<template>
-    <div>
-      <div v-if="showA" class="a-object text-[#f00]">A物件</div>
-      <div class="content h-[2000px]">這是一個很長的內容...</div>
-    </div>
-  </template>
+<template lang="">
+  <div>
+    <img src="../assets/image/" alt="">
+    <picture>
+      
+        <source media="(min-width:1800px)" srcset="@/assets/image/cloudy.jpg">
+        <source media="(min-width:1200px)" srcset="@/assets/image/rainy.jpg">
+        <source media="(min-width:768px)" srcset="@/assets/image/sun.jpeg">
+        <source media="(min-width:0px)" srcset="@/assets/image/sunny.webp">
+        <img src="@/assets/image/sunny.webp" alt="Weather">
+    </picture>
+  </div>
+</template>
+<script>
+export default {
+
+}
+</script>
+<style lang="">
   
-  <script>
-  export default {
-    data() {
-      return {
-        showA: false
-      }
-    },
-    mounted() {
-      window.addEventListener('scroll', this.handleScroll)
-    },
-    beforeDestroy() {
-      window.removeEventListener('scroll', this.handleScroll)
-    },
-    methods: {
-      handleScroll() {
-        const aObject = document.querySelector('.a-object')
-        const content = document.querySelector('.content')
-        const aObjectTop = aObject.offsetTop
-        const contentBottom = content.offsetTop + content.offsetHeight
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-  
-        if (scrollTop >= aObjectTop && scrollTop <= contentBottom) {
-          this.showA = true
-        } else {
-          this.showA = false
-        }
-      }
-    }
-  }
-  </script>
-  
-  <style>
-  .a-object {
-    display: none;
-  }
-  </style>
+</style>
