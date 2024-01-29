@@ -11,7 +11,8 @@ export default {
     extend: {},
     screens: {
       'sm': '520px',
-      'tablet': '920px',
+      'md': '920px',
+      'lg': '1280px',
     },
     colors: {
       'main-deep': '#800080',
@@ -20,6 +21,7 @@ export default {
     fontFamily: {
       'big':['Rubik+Doodle+Shadow'],
     },
+
     
   },
   plugins: [],

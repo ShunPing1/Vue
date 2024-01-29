@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <p class="text-[50px]">上傳圖片</p>
         <input type="file" accept=".jpg,.png" @change="UploadPic">
         <button type="button">上傳圖片</button>
         <img :src="fileSrc" alt="">

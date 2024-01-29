@@ -147,7 +147,7 @@ this.checkThis();
       @apply w-[50px] h-[50px] bg-slate-500 text-slate-50 rounded-lg text-xl;
     }
   }
-  .box {
-    @apply w-[300px] h-[300px] bg-[wheat] sm:w-[100px] sm:h-[100px] tablet:w-[200px];
-  }
+  // .box {
+  //   @apply w-[300px] h-[300px] bg-[wheat] sm:w-[100px] sm:h-[100px] tablet:w-[200px];
+  // }
 </style>

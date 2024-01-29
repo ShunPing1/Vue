@@ -7,8 +7,8 @@ export default {
   components: {
     RouterView
   },
-  data(){
-    return{
+  data() {
+    return {
       background,
 
     }
@@ -19,30 +19,34 @@ export default {
 <template>
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
-    <a href="/">home</a>
-    <a href="/about">about</a>
-    <a href="/calc">calc</a>
-    <a href="/todolist">todolist</a>
-    <a href="/pickupload">PickUpload</a>
-    <a href="/weathercard">WeatherCard</a>
-    <a href="/aospage">AosPage</a>
-    <a href="/lightbox">LightBox</a>
-    <!-- <RouterLink to="/">home</RouterLink>
-    <RouterLink to="/about">about</RouterLink>
-    <RouterLink to="/calc">calc</RouterLink> -->
+    <input type="checkbox" id="menu">
+    <label for="menu">
+      <div class="ham md:hidden text-[30px]">
+        選單
+      </div>
+    </label>
+    <nav>
+      <a href="/">home</a>
+      <a href="/about">about</a>
+      <a href="/calc">calc</a>
+      <a href="/todolist">todolist</a>
+      <a href="/pickupload">PickUpload</a>
+      <a href="/weathercard">WeatherCard</a>
+      <a href="/aospage">AosPage</a>
+      <a href="/lightbox">LightBox</a>
+    </nav>
   </header>
   <main>
     <RouterView />
     <div class="calc text-[80px]">我來自公版</div>
-    <div class="imgArea" :style="{backgroundImage:`url(${background})`}"></div>
+    <div class="imgArea" :style="{ backgroundImage: `url(${background})` }"></div>
   </main>
   <footer>
   </footer>
-
 </template>
 
 <!-- scoped style只影響這支vue -->
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -109,5 +113,26 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+}
+</style> -->
+<style lang="scss" scoped>
+header {
+  @apply flex items-end w-full h-[120px] fixed bg-[#aaa] sm:relative;
+
+  #menu:checked ~ nav{
+    @apply h-[250px];
+  }
+
+  nav {
+    @apply sm:w-[100px] h-0 absolute top-[120px] flex justify-center flex-wrap bg-[#aaf] truncate duration-[2s];
+
+    a {
+      @apply hover:bg-[#faa] sm:w-full;
+    }
+  }
+}
+
+main {
+  @apply pt-[120px];
 }
 </style>

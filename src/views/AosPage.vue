@@ -1,5 +1,7 @@
 <template lang="">
+  
   <div>
+    <p class="text-[50px]">測試頁</p>
     <picture>
         <source media="(min-width:1800px)" srcset="@/assets/image/longer_test/1800.png">
         <source media="(min-width:1200px)" srcset="@/assets/image/longer_test/1280.png">
