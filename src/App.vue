@@ -1,16 +1,32 @@
 <script>
-import { RouterView } from 'vue-router';
+import { RouterLink, RouterView } from 'vue-router';
 import background from '@/assets/image/desert.jpg';
 
 export default {
   // 元件宣告
   components: {
-    RouterView
+    RouterView,RouterLink
   },
   data() {
     return {
       background,
+      hamIng: false,
 
+    }
+  },
+  methods: {
+    menuSwitck(){
+      this.hamIng = !this.hamIng;
+      console.log(this.hamIng);
+    },
+    menuClose(e){
+      if (this.hamIng == true) {
+        console.log(e.target);
+        if (!e.target) {
+          console.log('nono');
+          this.hamIng = false
+        }
+      }
     }
   },
 }
@@ -21,11 +37,12 @@ export default {
   <header>
     <input type="checkbox" id="menu">
     <label for="menu">
-      <div class="ham md:hidden text-[30px]">
+      <div class="ham md:hidden text-[30px]" @click="menuSwitck">
         選單
       </div>
     </label>
-    <nav>
+    <nav @click="menuClose">
+      <RouterLink to="/">home</RouterLink>
       <a href="/">home</a>
       <a href="/about">about</a>
       <a href="/calc">calc</a>
@@ -120,14 +137,14 @@ header {
   @apply flex items-end w-full h-[120px] fixed bg-[#aaa] sm:relative;
 
   #menu:checked ~ nav{
-    @apply h-[250px];
+    @apply h-[500px];
   }
 
   nav {
-    @apply sm:w-[100px] h-0 absolute top-[120px] flex justify-center flex-wrap bg-[#aaf] truncate duration-[2s];
+    @apply sm:w-[30vw] h-0 absolute top-[120px] flex justify-center flex-wrap bg-[#aaf] truncate duration-[2s];
 
     a {
-      @apply hover:bg-[#faa] sm:w-full;
+      @apply hover:bg-[#faa] ;
     }
   }
 }
