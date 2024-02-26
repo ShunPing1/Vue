@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       background,
-      hamIng: false,
+      // hamIng: false,
 
     }
   },
@@ -35,23 +35,23 @@ export default {
 <template>
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
-    <input type="checkbox" id="menu">
+    <!-- <input type="checkbox" id="menu">
     <label for="menu">
       <div class="ham md:hidden text-[30px]" @click="menuSwitck">
         選單
       </div>
     </label>
-    <nav @click="menuClose">
-      <RouterLink to="/">home</RouterLink>
+    <nav @click="menuClose"> -->
+      <!-- <RouterLink to="/">home</RouterLink> -->
       <a href="/">home</a>
       <a href="/about">about</a>
       <a href="/calc">calc</a>
       <a href="/todolist">todolist</a>
       <a href="/pickupload">PickUpload</a>
       <a href="/weathercard">WeatherCard</a>
-      <a href="/aospage">AosPage</a>
-      <a href="/lightbox">LightBox</a>
-    </nav>
+      <!-- <a href="/aospage">AosPage</a> -->
+      <!-- <a href="/lightbox">LightBox</a> -->
+    <!-- </nav> -->
   </header>
   <main>
     <RouterView />
