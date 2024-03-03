@@ -49,9 +49,6 @@ export default {
       <a href="/todolist">todolist</a>
       <a href="/pickupload">PickUpload</a>
       <a href="/weathercard">WeatherCard</a>
-      <!-- <a href="/aospage">AosPage</a> -->
-      <!-- <a href="/lightbox">LightBox</a> -->
-    <!-- </nav> -->
   </header>
   <main>
     <RouterView />
