@@ -1,6 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import background from '@/assets/image/desert.jpg';
+import { event } from 'jquery';
 
 export default {
   // 元件宣告
@@ -10,7 +11,35 @@ export default {
   data() {
     return {
       background,
+      check: false,
       // hamIng: false,
+      links:[
+        {
+          path: "/",
+          tap: 'Home',
+        },
+        {
+          path: "/about",
+          tap: 'About',
+        },
+        {
+          path: "/calc",
+          tap: 'Calc',
+        },
+        {
+          path: "/todolist",
+          tap: 'todolist',
+        },
+        {
+          path: "/weathercard",
+          tap: 'WeatherCard',
+        },
+        {
+          path: "/hexschool",
+          tap: '六角學院練習題',
+        },
+        
+      ],
 
     }
   },
@@ -28,9 +57,7 @@ export default {
         }
       }
     },
-    active(){
-      console.log(111);
-    }
+
   },
 }
 </script>
@@ -38,22 +65,10 @@ export default {
 <template>
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
-    <!-- <input type="checkbox" id="menu">
-    <label for="menu">
-      <div class="ham md:hidden text-[30px]" @click="menuSwitck">
-        選單
-      </div>
-    </label>
-    <nav @click="menuClose"> -->
-      <RouterLink to="/">home</RouterLink>
-      <RouterLink to="/about">about</RouterLink>
-      <RouterLink to="/calc">calc</RouterLink>
-      <RouterLink to="/todolist">todolist</RouterLink>
-      <RouterLink to="/pickupload">pickupload</RouterLink>
-      <RouterLink to="/weathercard">weathercard</RouterLink>
-      <RouterLink to="/hexschool">hexschool</RouterLink>
+      <RouterLink :to="link.path" class="link" v-for="link in links" :key="link.id" >{{ link.tap }}</RouterLink>
   </header>
   <main>
+    
     <RouterView />
     <div class="calc text-[80px]">我來自公版</div>
     <div class="imgArea" :style="{ backgroundImage: `url(${background})` }"></div>
@@ -147,6 +162,9 @@ header {
       @apply hover:bg-[#faa] focus:bg-[#000];
     }
   }
+}
+.router-link-active{
+  @apply bg-[#fff]
 }
 
 // main {
