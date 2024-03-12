@@ -27,6 +27,9 @@ export default {
           this.hamIng = false
         }
       }
+    },
+    active(){
+      console.log(111);
     }
   },
 }
@@ -42,13 +45,13 @@ export default {
       </div>
     </label>
     <nav @click="menuClose"> -->
-      <!-- <RouterLink to="/">home</RouterLink> -->
-      <a href="/">home</a>
-      <a href="/about">about</a>
-      <a href="/calc">calc</a>
-      <a href="/todolist">todolist</a>
-      <a href="/pickupload">PickUpload</a>
-      <a href="/weathercard">WeatherCard</a>
+      <RouterLink to="/">home</RouterLink>
+      <RouterLink to="/about">about</RouterLink>
+      <RouterLink to="/calc">calc</RouterLink>
+      <RouterLink to="/todolist">todolist</RouterLink>
+      <RouterLink to="/pickupload">pickupload</RouterLink>
+      <RouterLink to="/weathercard">weathercard</RouterLink>
+      <RouterLink to="/hexschool">hexschool</RouterLink>
   </header>
   <main>
     <RouterView />
@@ -131,7 +134,7 @@ nav a:first-of-type {
 </style> -->
 <style lang="scss" scoped>
 header {
-  @apply flex items-end w-full h-[120px] fixed bg-[#aaa] sm:relative;
+  @apply flex items-end gap-[10px] w-full h-[60px] fixed bg-[#aaa] sm:relative;
 
   #menu:checked ~ nav{
     @apply h-[500px];
@@ -141,12 +144,12 @@ header {
     @apply sm:w-[30vw] h-0 absolute top-[120px] flex justify-center flex-wrap bg-[#aaf] truncate duration-[2s];
 
     a {
-      @apply hover:bg-[#faa] ;
+      @apply hover:bg-[#faa] focus:bg-[#000];
     }
   }
 }
 
-main {
-  @apply pt-[120px];
-}
+// main {
+//   @apply pt-[120px];
+// }
 </style>

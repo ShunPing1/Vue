@@ -50,6 +50,11 @@ const router = createRouter({
       name: 'lightbox',
       component: () => import('../views/LightBox.vue')
     },
+    {
+      path: '/hexschool',
+      name: 'hexschool',
+      component: () => import('../views/HexSchool.vue')
+    },
     
   ]
 })
